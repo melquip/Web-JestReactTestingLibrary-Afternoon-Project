@@ -56,4 +56,16 @@ describe('personMaker', () => {
 	});
 
 	// write more tests! <===========================================
+	it('returns null if fed no arguments', () => {
+		expect(() => helpers.personMaker()).toThrow();
+	});
+	it('throws error if fed a single argument', () => {
+		expect(() => helpers.personMaker('Peter')).toThrow();
+	});
+	it('throws error if fed invalid name', () => {
+		expect(() => helpers.personMaker(['Peter'], 5)).toThrow();
+	});
+	it('throws error if fed invalid age', () => {
+		expect(() => helpers.personMaker('Peter', '5')).toThrow();
+	});
 });
