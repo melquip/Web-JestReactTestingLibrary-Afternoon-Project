@@ -37,3 +37,19 @@ export function personMaker(name, age) {
 }
 
 // BUILD YOUR OWN UTILITY FUNCTIONS AND TEST THEM OUT!
+
+export function divide(...numbers) {
+	const enoughArgs = numbers.length > 1;
+	if (!enoughArgs) return null;
+	const invalidNumber = numbers.some(number => {
+		return typeof number !== 'number' || number === 0;
+	});
+
+	if (invalidNumber) {
+		throw new Error('invalid number or attempted to divide with 0');
+	}
+
+	return numbers.reduce((acc, currentNumber) => {
+		return acc / currentNumber;
+	});
+}

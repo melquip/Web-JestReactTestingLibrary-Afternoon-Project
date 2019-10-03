@@ -57,15 +57,43 @@ describe('personMaker', () => {
 
 	// write more tests! <===========================================
 	it('returns null if fed no arguments', () => {
-		expect(() => helpers.personMaker()).toThrow();
+		expect(helpers.personMaker()).toBe(null);
 	});
-	it('throws error if fed a single argument', () => {
-		expect(() => helpers.personMaker('Peter')).toThrow();
+	it('returns null if fed a single argument', () => {
+		expect(helpers.personMaker('Peter')).toBeNull();
 	});
 	it('throws error if fed invalid name', () => {
 		expect(() => helpers.personMaker(['Peter'], 5)).toThrow();
 	});
 	it('throws error if fed invalid age', () => {
 		expect(() => helpers.personMaker('Peter', '5')).toThrow();
+	});
+});
+
+describe('divide', () => {
+	it('returns null if fed no arguments', () => {
+		expect(helpers.divide()).toBe(null);
+	});
+	it('returns null if fed a single argument', () => {
+		expect(helpers.divide(80)).toBe(null);
+	});
+	it('divides positive numbers correctly', () => {
+		expect(helpers.divide(80, 2)).toBe(40);
+	});
+	it('divides negative numbers correctly', () => {
+		expect(helpers.divide(-80, -2)).toBe(40);
+	});
+	it('throws if fed something which is not a number', () => {
+		expect(() => helpers.divide('number', [])).toThrow();
+	});
+	it('throws if attempting to divide with zero', () => {
+		expect(() => helpers.divide(80, 0)).toThrow();
+		expect(() => helpers.divide(0, 80)).toThrow();
+	});
+	it('can divide any ammount of numbers consecutively', () => {
+		expect(helpers.divide(80, 2)).toBe(40);
+		expect(helpers.divide(80, 2, 2)).toBe(20);
+		expect(helpers.divide(80, 2, 2, 2)).toBe(10);
+		expect(helpers.divide(80, 2, 2, 2, 2)).toBe(5);
 	});
 });
